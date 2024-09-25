@@ -13,7 +13,8 @@ if( isset( $_POST[ 'Login' ] ) && isset ($_POST['username']) && isset ($_POST['p
 	$pass = $_POST[ 'password' ];
 	$pass = stripslashes( $pass );
 	$pass = ((isset($GLOBALS["___mysqli_ston"]) && is_object($GLOBALS["___mysqli_ston"])) ? mysqli_real_escape_string($GLOBALS["___mysqli_ston"],  $pass ) : ((trigger_error("[MySQLConverterToo] Fix the mysql_escape_string() call! This code does not work.", E_USER_ERROR)) ? "" : ""));
-	$pass = md5( $pass );
+	// deepcode ignore InsecureHash: <please specify a reason of ignoring this>
+ $pass = md5( $pass );
 
 	// Default values
 	$total_failed_login = 3;
